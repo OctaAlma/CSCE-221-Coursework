@@ -1,0 +1,15 @@
+Please list all sources (people, books, webpages, etc.) you consulted regarding this assignment and how they helped: (Sources can be used broadly as reference for the general approach; YOU MUST NOT COPY CODE!)
+
+CSCE 221 Students: N/A
+
+Other People: N/A
+
+Printed Material: N/A
+
+Websites: 
+cppreference.com and www.cplusplus.com were both used to reference some of the stringstream and vector classes'
+appropriate includes and built-in functions.
+
+Other: 
+Lecture slides
+Programming Assignment Document

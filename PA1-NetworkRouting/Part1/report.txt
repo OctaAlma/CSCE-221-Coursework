@@ -1,0 +1,71 @@
+1. Please list all sources (people, books, webpages, etc.) you consulted regarding this assignment and how they helped: (Sources can be used broadly as reference for the general approach; YOU MUST NOT COPY CODE!)
+
+CSCE 221 Students: N/A
+
+Other People: N/A
+
+Printed Material: N/A
+
+Websites: 
+https://www.cplusplus.com/reference/
+https://docs.microsoft.com/en-us/cpp/
+"Programming Assignment 1 - Network Routing" document
+
+Other: N/A
+
+
+
+2. Why is the overloaded operator<< a defined outside the class rather than as a member function?  What is the purpose of "friend" in a case like this?
+
+The overload operator is defined outside the class because the method belongs to the output
+stream class. The purpose of the "friend" declaration enables the output streams to access
+the private/protected variables of the NetworkPacket class. In this case, "friend" would not be necessary 
+because all of the data members in the NetworkPacket class are public.
+
+
+3. Why is the overloaded operator<< inline in the NetworkPacket class?  Can you think of an alternative to prevent the potential problem?
+
+According to https://docs.microsoft.com/en-us/cpp/, inline functions ask the compiler to expand the function whenever it is called in the code,
+and it is typically done to decrease function-call overhead.
+
+One alternative is to make getters for the private values we want to print out (in this case getters
+would not be necessary because all data members are public), and then write the actual "cout" 
+statement whenever we want to display a NetworkPacket object.
+
+
+4. Why does the Node not need a destructor, and thus not be applicable for the Rule of Three?
+
+The node class itself does not contain any data stored in the heap/use dynamically allocated memory.
+
+
+5. Give an example of when a doubly-linked list may be advantageous over a singly-linked one.
+
+Doubly-linked list are better whenever you want to access/add data that is found towards the
+end of the linked list. 
+
+In a singly-linked list, you would have to traverse the list from the beginning to get to 
+the last few nodes.
+
+
+6. How many steps does it take to pop_front() from the queue to get the next item?  That is, if we think about the number of computations needed to get the next element in the queue as the queue grows to any arbitrary size, how complex is the pop_front() (also called "dequeue") operation?
+
+The pop_front() method does two main things: 
+    1. Get the data from the node in the "front"
+    2. Remove the node in the "front"
+
+Getting the "front" is fairly simple since getFront() just returns the data. Meaning the complexity for that is about O(1).
+Removing the last node in the list is not complex either, since the steps for removing a node at the "front" are the same no matter
+the length of the linkedList.
+
+
+7. What is an advantage of templated classes?
+
+Templating classes enables your classes to work any datatype, meaning that you will not have to write multiple methods
+so that your class is compatible with different possible data types. Since we are looking at ways of storing data in this class,
+I am assuming templating will be important as we learn more of these structures.
+
+
+8. When creating a templated version of the DoublyLinkedList, why do you need to put "template class DoublyLinkedList<>" for each type at the bottom of the source file?
+
+According to the assignment manual, if a class defined functions outside of its corresponding ".h" file require "template class DoublyLinkedList<>"
+to generate the corresponding functions in the object files. This enables the linker to find instances of the class with the specific data type.

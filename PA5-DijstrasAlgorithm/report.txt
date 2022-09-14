@@ -1,0 +1,42 @@
+1. Please list all sources (people, books, webpages, etc.) you consulted regarding this assignment and how they helped: (Sources can be used broadly as reference for the general approach; YOU MUST NOT COPY CODE!)
+
+CSCE 221 Students: N/A
+
+Other People: N/A
+
+Printed Material: N/A 
+
+Websites: N/A
+
+Other: N/A
+
+
+2. Describe the approach you used to implement Dijkstra's algorithm.  This should include a description of the data structures you used and if they come from STL, your own implementation, or other (such as the provided Locator Heap).
+
+a. The algorithm takes in the labels of the desired start and end vertices. 
+
+b. The algorithm then iterates through all of the vertices in the graph and places them all in a prioriy Queue, which is implemented with a min-heap structure.
+	- When it iterates through the start vertex, it sets its distanceTo member to 0 to ensure it is the minimum element in the min-heap.
+	- When a "non-start" vertex is inserted to the heap its "visited" boolean member is set to false and the distanceTo member is set to the max value for a float
+
+c. We now remove the element with the smallest "distanceTo" value at once.
+	- We then iterate through the current vertex's edges and check their neighbors.
+	- IF a neighbor vertex' distanceTo is LESS than the current vertex's distanceTo PLUS the weight of the edge, the neighbor's distanceTo and pathTo vector to reflect the shorter path.
+		- IF a neighbor is updated, its position in the heap/priority Queue is updated to reflect its shorter distance to the starting vertex
+
+d. Once all the neighbors have been visited, the current vertex's visited boolean member is set to true.
+
+e. If the current vertex's label is equal to the end label we are looking for, we return the current vertex's pathTo vector.
+
+f. Steps c-e are repeated until the condition for e is met or the priority queue gets empty. 
+
+
+3. Describe another approach which could be used to implement Dijkstra's algorithm.  For instance, this could include a contrast between storing flags such as "visited" in an auxillary structure as opposed to inside the vertex.
+
+Another possible approach to Dijkstra's could be to have multiple auxiliary structures to keep track of each items' neighbors, edges, and member variables. 
+This structure would be required if the objects being used did not have any data members to keep track of these elements required for Dijkstra's.
+
+
+4. Give an example of using an STL data structure such as map or unordered_map to store and access auxillary data used in Dijkstra's algorithm.
+
+The map from the standard template library could be used to store the auxiliary data, specially in our case considering that each unique label corresponds to a number from 0-(n-1) (where n is the # of vertices). This label could be used as the key to store the auxiliary data for a given vertex.

@@ -1,0 +1,53 @@
+Please list all sources (people, books, webpages, etc.) you consulted regarding this assignment and how they helped: (Sources can be used broadly as reference for the general approach; YOU MUST NOT COPY CODE!)
+
+CSCE 221 Students: N/A
+
+Other People: N/A
+
+Printed Material: N/A 
+
+Websites: 
+https://www.ibm.com/docs/cs/zos/2.4.0?topic=only-virtual-functions-c
+Used IBM's documentation regarding virtual functions and inheritance in C++
+
+Other: N/A
+
+
+2. Regarding inheritance, what are pure virtual functions?
+
+Pure virtual functions are functions in a base class that do NOT have any defined behaviors, and
+it is up to the derived classes to provide the definitions.
+
+
+3. What are your observations on the runtime of the different hash table methods?
+
+After running each runner 8 times, I gathered the following runtimes (in microseconds):
+
+  Trial | Chaining | Probing
+________|__________|___________
+Trial 1 | 455326   |   855691 |
+Trial 2 | 463359   |   879297 |
+Trial 3 | 465617   |   867906 |
+Trial 4 | 455431   |   862734 |
+Trial 5 | 467267   |   912121 |
+Trial 6 | 461552   |   873953 |
+Trial 7 | 457064   |   932431 |
+Trial 8 | 468341   |   866879 |
+_______________________________
+Mean    | 881376   |   461744 |
+Std Dev |   5273   |    26753 |
+
+Overall, it appears that the chaining hash table has better performance to that 
+of the probing hash table when it comes to the data in our dictionary. 
+
+4. We did an extremely simplified blockchain and cryptocurrency, using the requirement that the hash only needs to begin with '2'.  What mining approach did you create to try to find a valid nonce?
+
+The mining function was very brute-force. The mining function actually takes the previous block's hash, converts it into a string, and applies 
+the PRH24 hash that we made. It repeats this process with the previous hash it created until it gets a valid hash that begins with '2'.
+
+
+5. How might you approach this problem differently with a more restrictive problem?  For instance, if you change the validator to require the hash begin with "221", you will find the mining operation takes significantly more time.  Briefly discuss this in the context of modern cryptocurrency mining.
+
+In the case that the hash had to start with "221", I would probably have to use my knowledge of the hash function and signing process to better optimize 
+the mining algorithm. In modern cryptocurrency mining, obtaining a valid hash requires a lot of computational and physical resources, due to the brute-force nature
+of the mining and different validator conditions.
